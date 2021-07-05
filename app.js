@@ -11,12 +11,14 @@ var yScale = d3
   .domain(d3.extent(birthData2011, (d) => d.lifeExpectancy))
   .range([height - padding, padding]);
 // extent works out the min & max for you
+var yAxis = d3.axisLeft(yScale);
 
 var xScale = d3
   .scaleLinear()
   .domain(d3.extent(birthData2011, (d) => d.births / d.population))
   .range([padding, width - padding]);
 // no. of births / population = births-per-capita [rather than no. of births]
+var xAxis = d3.axisBottom(xScale);
 
 var colorScale = d3
   .scaleLinear()
@@ -29,6 +31,16 @@ var radiusScale = d3
   .domain(d3.extent(birthData2011, (d) => d.births))
   .range([2, 40]);
 // size of circle is mapped to no. of births
+
+d3.select("svg")
+  .append("g")
+  .attr("transform", `translate(0, ${height - padding})`)
+  .call(xAxis);
+
+d3.select("svg")
+  .append("g")
+  .attr("transform", `translate(${padding}, 0)`)
+  .call(yAxis);
 
 d3.select("svg")
   .attr("height", height)
