@@ -3,6 +3,9 @@ svg {
   display: block;
 }
 
+text {
+  color: blue;
+}
 .tick line {
   stroke: grey;
   stroke-dasharray: 10, 5;

@@ -65,7 +65,7 @@ d3.select("svg")
   .style("font-size", "1.5em")
   .text("Data on Births by Country in 2011");
 
-// AXIS TITLE
+// Y AXIS TITLE
 d3.select("svg")
   .append("text")
   .attr("transform", `rotate(-90)`)
