@@ -38,7 +38,9 @@ var xAxis = d3.axisBottom(xScale).tickSize(-height + 2 * padding);
 
 var radiusScale = d3
   .scaleLinear()
-  .domain(d3.extent(data, (d) => d.medianAge))
+  .domain(
+    d3.extent(data, (d) => (d.medianAge && d.medianAge > 0 ? d.medianAge : 0))
+  )
   .range([5, 30]);
 
 var colorScale = d3
